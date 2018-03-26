@@ -9,16 +9,21 @@
 <body>
     <script src = "/socket.io/socket.io.js"></script>
     <script>
-        var socket = io();
+        var socket = io('/namespace'); //with namespace"
+     
         socket.on('testEventServer', function(data){document.write(data.description)});
         socket.emit("testEventClient", { description: 'A custom event named testEventClient!'});
     //     socket.on('broadcast',function(data) {
     //      document.body.innerHTML = '';
     //      document.write(data.description);
     //   });
-      socket.on('newclientconnect',function(data) {
+    //   socket.on('newclientconnect',function(data) {
+    //      document.body.innerHTML = '';
+    //      document.write(data.description);
+    //   });
+    socket.on('connectToRoom',function(data) {
          document.body.innerHTML = '';
-         document.write(data.description);
+         document.write(data);
       });
      </script> 
      <div>Hello World</div>
